@@ -4,7 +4,12 @@ https://images.ctfassets.net/y2ske730sjqp/1aONibCke6niZhgPxuiilC/2c401b05a072887
 
 # Netflix-GPT
 -config Tailwind CSS
-
+-Header
+-Routing App
+-Log in
+-Sign In
+-form validation
+-useRef
 
 # Features
 -Login/Sign Up
