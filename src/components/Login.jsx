@@ -3,6 +3,10 @@
 import React, { useRef, useState } from "react";
 import Header from "./Header";
 import { isValidData } from "../utils/validate";
+import {auth} from "../utils/firebase"
+import {
+  createUserWithEmailAndPassword,signInWithEmailAndPassword
+} from "firebase/auth";
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
@@ -25,6 +29,44 @@ const Login = () => {
     // const passwordValue = password.current.value;
      const data = isValidData(email.current.value, password.current.value);
      newErrors(data);
+    if (data)    return;
+    
+    if(!isSignIn){
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          console.log(user);
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          newErrors(errorCode + " " + errorMessage);
+          // ..
+        });
+    }else{
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          // ...
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          newErrors(errorCode + " " + errorMessage);
+        });
+    }
    
     
   };

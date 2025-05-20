@@ -10,7 +10,8 @@ https://images.ctfassets.net/y2ske730sjqp/1aONibCke6niZhgPxuiilC/2c401b05a072887
 -Sign In
 -form validation
 -useRef
-
+-firebase setup
+-Create Sign Up user account
 # Features
 -Login/Sign Up
  -Sign/login
